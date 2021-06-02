@@ -1,12 +1,16 @@
 
 
-/*require('./bootstrap');
+require('./bootstrap');
 
-window.Vue = require('vue').default;
+window.Vue = require('vue');
 
+import App from './App.vue';
+import VueAxios from 'vue-axios';
+import VueRouter from 'vue-router';
+import axios from 'axios';
+import { routes } from './routes';
 
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/*Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
 
@@ -15,6 +19,25 @@ const app = new Vue({
 });*/
 
 //const { scripts } = require("laravel-mix");
+
+
+
+Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
+ 
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes
+});
+ 
+const app = new Vue({
+    el: '#app',
+    router: router,
+    render: h => h(App),
+});
+
+
+
 
 
 <template>
